@@ -1,0 +1,12 @@
+name: testing-tests
+run-name: ${{ github.actor }} is learning GitHub Actions
+on: [ push ]
+jobs:
+
+  Everything:
+    runs-on: ubuntu-22.04
+    container: python:3.11.0
+    steps:
+      - uses: actions/checkout@v3
+      - run: python run.py --install
+      - run: python run.py --doctest *
