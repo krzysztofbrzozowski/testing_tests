@@ -1,5 +1,5 @@
 name: testing-tests
-run-name: ${{ github.actor }} is learning GitHub Actions
+run-name: ${{ github.actor }} is learning how to run tests via CI
 on: [ push ]
 jobs:
 
