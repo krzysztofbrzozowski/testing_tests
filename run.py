@@ -37,7 +37,7 @@ class Install(Action):
         if chapter is None:
             chapter = '.'
         run('clear && printf "\e[3J"')  # noqa
-        run(f'pip install -r {chapter}/requirements.txt')
+        run(f'pip install -r requirements.txt')
         log.info('Requirements installed')
 
 
@@ -57,21 +57,23 @@ class Build(Action):
 class Doctest(Action):
     def __call__(self, parser, namespace, paths, *args, **kwargs):
         run('clear && printf "\e[3J"')  # noqa
-        all_tests = 0
-        files = sorted(self.get_files(paths))
-        for file in files:
-            # if self.is_ignored(file):
-            #     continue
-            # if self.is_venv(file):
-            #     continue
-            # if self.is_skipped(file):
-            #     continue
-            if count := self.count_doctests(file):
-                self.run_doctest(file)
-                all_tests += count
-            else:
-                log.error(f'NOTESTS\t{file}')
-        logging.warning(f'\nAll tests {all_tests}')
+
+        run(f'pytest test -v')
+        # all_tests = 0
+        # files = sorted(self.get_files(paths))
+        # for file in files:
+        #     # if self.is_ignored(file):
+        #     #     continue
+        #     # if self.is_venv(file):
+        #     #     continue
+        #     # if self.is_skipped(file):
+        #     #     continue
+        #     if count := self.count_doctests(file):
+        #         self.run_doctest(file)
+        #         all_tests += count
+        #     else:
+        #         log.error(f'NOTESTS\t{file}')
+        # logging.warning(f'\nAll tests {all_tests}')
 
     @staticmethod
     def is_ignored(file: Path):
