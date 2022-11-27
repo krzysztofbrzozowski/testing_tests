@@ -20,3 +20,11 @@ def add(a, b):
 
 def multiply(a, b):
     return a * b
+
+
+def devide(a, b):
+    """
+    >>> devide(10, 5)
+    2.0
+    """
+    return a / b
